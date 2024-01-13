@@ -3,30 +3,90 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
     <title>totk-recipes</title>
 		<style>
-			.holding {
+			.container {
+				height: 200px;
+				width: 200px;
+				background-color: blue;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+			.container .holding {
 				display: grid;
 				grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 				height: 40px;
-				width: 200px;
-				padding: 40px;
 			}
 			.holding div {
-				background-color: black;
-				color: white;
+				background-color: red;
+				border:solid;
+				text-align: center;
+			}
+			.container .items {
+				overflow: auto;
+				height: 160px;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+			}
+			.items div {
+				background-color: red;
+				border: solid; 
+				height: 40px;
 				text-align: center;
 			}
 		</style>
   </head>
   <body>
-      <div class="holding">
-				<div>1</div>
-				<div>2</div>
-				<div>3</div>
-				<div>4</div>
-				<div>5</div>
-      </div>
-	</body>
+			<div class="container"> 
+				<div class="holding">
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+					<div></div>
+				</div>
+				<div class="items">
+					<div>a</div>
+					<div>b</div>
+					<div>c</div>
+					<div>d</div>
+					<div>e</div>
+					<div>f</div>
+					<div>g</div>
+					<div>h</div>
+					<div>i</div>
+					<div>j</div>
+					<div>k</div>
+					<div>l</div>
+				</div>
+			<div>
+			<script type="text/javascript">
+				const items = document.querySelectorAll('.items div');
+				items.forEach(function(div) {
+					div.onclick = function() {
+						addToHolding(div);
+					};
+				});
+				function addToHolding(elem) {
+					const holding = document.querySelectorAll('.holding div');
+					let last;
+					for (const div of holding) {
+						if (div.innerText === '') {
+							last = div;
+						}
+					}
+					if (last) {
+						last.innerText = elem.innerText;
+					}
+				}
+				const holdingSet = document.querySelectorAll('.holding div');
+				holdingSet.forEach(function(div) {
+					div.onclick = function() {
+						div.innerText = '';
+					}
+				});
+			</script>
+		</body>
 </html>
