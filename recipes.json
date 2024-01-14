@@ -1,0 +1,62 @@
+{
+	"Skyshroom": {
+		name: "Mushroom Skewer",
+		hearts: 1
+	},
+	"RawMeat,Skyshroom": {
+		ingredients: "Meat and Mushroom Skewer",
+		hearts: 3
+	},
+	"HyruleBass,Skyshroom": {
+		name: "Fish and Mushroom Skewer",
+		hearts: 3
+	},
+	"RawMeat": {
+		name: "Meat Skewer",
+		hearts: 2
+	},
+	"HyruleBass": {
+		name: "Fish Skewer",
+		heats: 2
+	},
+	"HyruleBass,IronshellCrab": {
+		name: "Seafood Skewer",
+		hearts: 2
+	},
+	"HyruleBass,IronshellCrab,ChillfinTroutVoltfinTrout": {
+		name: "Copious Seafood Skewers",
+		hearts: 8
+	},
+	"RawMeat,RawWholeBird,RawPrimeMeat,RawBirdThigh": {
+		name: "Copious Meat Skewers",
+		hearts: 10
+	},
+	"Apple,HyruleHerb": {
+		name: "Steamed Fruit",
+		hearts: 3
+	},
+	"HylianTomato,HyruleHerb": {
+		name: "Steamed Tomato",
+		hearts: 4
+	},
+	"Skyshroom,HyruleHerb": {
+		name: "Steamed Mushrooms",
+		hearts: 4
+	},
+	"RawMeat,HyruleHerb": {
+		name: "Steamed Meat",
+		hearts: 2,
+	},
+	"HyruleBass,HyruleHerb": {
+		name: "Steamed Fish",
+		hearts: 4
+	},
+	"Spicy Pepper": {
+		name: "Sauteed Peppers",
+		hearts: 1
+	},
+	"Acorn": {
+		name: "Sauteed Nuts",
+		hearts: 0.5
+	}
+}
