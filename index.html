@@ -18,7 +18,7 @@
 			.container {
 				box-shadow: 0 1px 3px hsl(0, 0%, 0%, 0.2); 
 				border-radius: 20px;
-				height: 500px;
+				height: 600px;
 				width: 500px;
 				flex-shrink: 0;
 				background: var(--p1);
@@ -59,10 +59,44 @@
 				align-items: center;
 				justify-content: center;
 			}
+
+			.container .action {
+				height: 100px;
+				text-align: center;
+				display: flex;
+				justify-content: center;
+			}
+
+			.action p {
+				width: 200px;
+				height: 30px;
+				flex-shrink: 0;
+    		margin: auto;
+    		display: block;
+    		border-radius: 20px;
+    		background: var(--p3);
+				color: var(--p5);
+			}
+
+			.action button {
+				width: 90px;
+				height: 30px;
+				flex-shrink: 0;
+        margin: auto;
+        display: block;
+        border-radius: 20px;
+        background: var(--p3);
+				color: var(--p5);
+				font-weight: 600;
+			}
 		</style>
   </head>
   <body>
 			<div class="container"> 
+				<div class="action">
+					<p id="target">Submit a recipe...</p>
+					<button id="sub">Submit</button>
+				</div>
 				<div class="holding">
 					<div></div>
 					<div></div>
@@ -71,54 +105,86 @@
 					<div></div>
 				</div>
 				<div class="items">
-					<div>a</div>
-					<div>b</div>
-					<div>c</div>
-					<div>d</div>
-					<div>e</div>
-					<div>f</div>
-					<div>g</div>
-					<div>h</div>
-					<div>i</div>
-					<div>j</div>
-					<div>k</div>
-					<div>l</div>
-					<div>m</div>
-					<div>n</div>
-					<div>o</div>
-					<div>p</div>
-					<div>q</div>
-					<div>r</div>
-					<div>s</div>
-					<div>t</div>
-					<div>u</div>
+					<div>Skyshroom</div>
+					<div>Raw Meat</div>
+					<div>Hyrule Bass</div>
+					<div>Ironshell Crab</div>
+					<div>Chillfin Trout</div>
+					<div>Voltfin Trout</div>
+					<div>Raw Whole Bird</div>
+					<div>Raw Bird Thigh</div>
+					<div>Raw Prime Meat</div>
+					<div>Apple</div>
+					<div>Hyrule Herb</div>
+					<div>Hylian Tomato</div>
+					<div>Spicy Pepper</div>
+					<div>Acorn</div>
+					<div>Endura Carrot</div>
+					<div>Hearty Radish</div>
+					<div>Sundelion</div>
+					<div>Stambulb</div>
+					<div>Goat Butter</div>
+					<div>Hylian Shroom</div>
+					<div>Zapshroom</div>
+					<div>Silent Shroom</div>
+					<div>Goron Spice</div>
+					<div>Raw Gourmet Meat</div>
+					<div>Rock Salt</div>
 				</div>
 			<div>
-			<script type="text/javascript">
-				const items = document.querySelectorAll('.items div');
-				items.forEach(function(div) {
-					div.onclick = function() {
-						addToHolding(div);
-					};
-				});
-				function addToHolding(elem) {
-					const holding = document.querySelectorAll('.holding div');
-					let last;
-					for (const div of holding) {
-						if (div.innerText === '') {
-							last = div;
-						}
-					}
-					if (last) {
-						last.innerText = elem.innerText;
-					}
+			<script async> 
+				async function fj() {
+					const data = await fetch('/recipes.json');
+					return await data.json();
 				}
-				const holdingSet = document.querySelectorAll('.holding div');
-				holdingSet.forEach(function(div) {
-					div.onclick = function() {
-						div.innerText = '';
+				async function main() {
+					const items = document.querySelectorAll('.items div');
+					items.forEach(function(div) {
+						div.onclick = function() {
+							const holding = document.querySelectorAll('.holding div');
+							let last;
+							for (const elem of holding) {
+								if (div.innerText === '') {
+									last = elem;
+								}
+							}
+							if (last) {
+								last.innerText = div.innerText;
+							}
+						};
+					});
+					const holdingSet = document.querySelectorAll('.holding div');
+					holdingSet.forEach(function(div) {
+						div.onclick = function() {
+							div.innerText = '';
+						}
+					});
+					const recipes = await fj();
+					const ingredients = Object.keys(recipes);
+					const ir = [];
+					for (let i of ingredients) {
+						ir.push(i.split('').sort().join(''));
 					}
-				});
+					const button = document.querySelector('#sub');
+					button.onclick = function() {
+						const bar = document.querySelectorAll('.holding div');
+						let compound = '';
+						for (const div of bar) {
+							if (div.innerText !== '') {
+								compound += div.innerText + ',';
+							}
+						}
+						if (compound.endsWith(',')) {
+							const k = compound.slice(0, compound.length-1).split('').sort().join('');
+						} else { return; }
+						const index = ir.findIndex(k);
+						if(index !== -1) {
+							const p = document.querySelector('#target');
+							p.innerText = recipes[i]; 
+						} else { return; }
+					};
+				}
+				main();
 			</script>
 		</body>
 </html>

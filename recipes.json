@@ -1,62 +1,31 @@
 {
-	"Skyshroom": {
-		name: "Mushroom Skewer",
-		hearts: 1
-	},
-	"RawMeat,Skyshroom": {
-		ingredients: "Meat and Mushroom Skewer",
-		hearts: 3
-	},
-	"HyruleBass,Skyshroom": {
-		name: "Fish and Mushroom Skewer",
-		hearts: 3
-	},
-	"RawMeat": {
-		name: "Meat Skewer",
-		hearts: 2
-	},
-	"HyruleBass": {
-		name: "Fish Skewer",
-		heats: 2
-	},
-	"HyruleBass,IronshellCrab": {
-		name: "Seafood Skewer",
-		hearts: 2
-	},
-	"HyruleBass,IronshellCrab,ChillfinTroutVoltfinTrout": {
-		name: "Copious Seafood Skewers",
-		hearts: 8
-	},
-	"RawMeat,RawWholeBird,RawPrimeMeat,RawBirdThigh": {
-		name: "Copious Meat Skewers",
-		hearts: 10
-	},
-	"Apple,HyruleHerb": {
-		name: "Steamed Fruit",
-		hearts: 3
-	},
-	"HylianTomato,HyruleHerb": {
-		name: "Steamed Tomato",
-		hearts: 4
-	},
-	"Skyshroom,HyruleHerb": {
-		name: "Steamed Mushrooms",
-		hearts: 4
-	},
-	"RawMeat,HyruleHerb": {
-		name: "Steamed Meat",
-		hearts: 2,
-	},
-	"HyruleBass,HyruleHerb": {
-		name: "Steamed Fish",
-		hearts: 4
-	},
-	"Spicy Pepper": {
-		name: "Sauteed Peppers",
-		hearts: 1
-	},
-	"Acorn": {
-		name: "Sauteed Nuts",
-		hearts: 0.5
-	}
+	"Skyshroom": "Mushroom Skewer",	
+	"RawMeat,Skyshroom": "Meat and Mushroom Skewer",
+	"HyruleBass,Skyshroom": "Fish and Mushroom Skewer",
+	"RawMeat": "Meat Skewer",
+	"HyruleBass": "Fish Skewer",
+	"HyruleBass,IronshellCrab": "Seafood Skewer",
+	"HyruleBass,IronshellCrab,ChillfinTroutVoltfinTrout": "Copious Seafood Skewers",
+	"RawMeat,RawWholeBird,RawPrimeMeat,RawBirdThigh": "Copious Meat Skewers",
+	"Apple,HyruleHerb": "Steamed Fruit",
+	"HylianTomato,HyruleHerb": "Steamed Tomato",
+	"Skyshroom,HyruleHerb": "Steamed Mushrooms",
+	"RawMeat,HyruleHerb": "Steamed Meat",
+	"HyruleBass,HyruleHerb": "Steamed Fish",
+	"Spicy Pepper": "Sauteed Peppers",
+	"Acorn": "Sauteed Nuts",
+	"HyruleHerb": "Fried Wild Greens",
+	"EnduraCarrot,HeartyRadish,Sundelion,HyruleHerb": "Copious Fried Wild Greens",
+	"Stambulb": "Cooked Stambulb",
+	"Stambulb,GoatButter": "Buttered Stambulb",
+	"Skyshroom,HylianShroom,Zapshroom,SilentShroom": "Copious Mushroom Skewers",
+	"RawMeat,GoronSpice": "Spiced Meat Skewer",
+	"RawPrimeMeat,GoronSpice": "Prime Spiced Meat Skewer",
+	"RawGourmetMeat,GoronSpice": "Gourmet Spiced Meat Skewer",
+	"IronshellCrab,GoronSpice": "Crab Stir-Fry",
+	"HyruleHerb,RockSalt": "Salt-Grilled Greens",
+	"Skyshroom,RockSalt" : "Salt-Grilled Mushrooms",
+	"RawMeat,RockSalt": "Salt-Grilled Meat",
+	"HylianTomato": "Simmered Tomato",
+	"Apple": "Simmered Fruit"
 }
