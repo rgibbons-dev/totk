@@ -131,7 +131,7 @@
 					<div>Raw Gourmet Meat</div>
 					<div>Rock Salt</div>
 				</div>
-			<div>
+			</div>
 			<script async> 
 				async function fj() {
 					const data = await fetch('/recipes.json');
@@ -177,7 +177,7 @@
 						if (compound.endsWith(',')) {
 							const k = compound.slice(0, compound.length-1).split('').sort().join('');
 						} else { return; }
-						const index = ir.findIndex(k);
+						const index = ir.findIndex(elem => elem === k);
 						if(index !== -1) {
 							const p = document.querySelector('#target');
 							p.innerText = recipes[i]; 
