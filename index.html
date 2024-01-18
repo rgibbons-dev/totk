@@ -1,193 +1,41 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>totk-recipes</title>
-		<style>
-			:root {
-				--p1: hsl(263, 65%, 90%, 1);
-				--p2: hsl(263, 66%, 79%, 1);
-				--p3: hsl(263, 67%, 61%, 1);
-				--p4: hsl(263, 66%, 41%, 1);
-				--p5: hsl(263, 67%, 27%, 1);
-			}
-			body {
-				background: var(--p1);
-			}
-			.container {
-				box-shadow: 0 1px 3px hsl(0, 0%, 0%, 0.2); 
-				border-radius: 20px;
-				height: 600px;
-				width: 500px;
-				flex-shrink: 0;
-				background: var(--p1);
-				position: absolute;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
-			}
-			.container .holding {
-				display: grid;
-				grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-				height: 100px;
-			}
-			.holding div {
-				background-color: var(--p3);
-				border-radius: 20px;
-				font-weight: 400;
-				color: var(--p5);
-				text-align: center;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-			.container .items {
-				overflow: auto;
-				height: 400px;
-				display: grid;
-				grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-			}
-			.items div {
-				background-color: var(--p2);
-				border-radius: 20px;
-				height: 100px;
-				text-align: center;
-				font-weight: 400;
-				color: var(--p4);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-			}
-
-			.container .action {
-				height: 100px;
-				text-align: center;
-				display: flex;
-				justify-content: center;
-			}
-
-			.action p {
-				width: 200px;
-				height: 30px;
-				flex-shrink: 0;
-    		margin: auto;
-    		display: block;
-    		border-radius: 20px;
-    		background: var(--p3);
-				color: var(--p5);
-			}
-
-			.action button {
-				width: 90px;
-				height: 30px;
-				flex-shrink: 0;
-        margin: auto;
-        display: block;
-        border-radius: 20px;
-        background: var(--p3);
-				color: var(--p5);
-				font-weight: 600;
-			}
-		</style>
-  </head>
-  <body>
-			<div class="container"> 
-				<div class="action">
-					<p id="target">Submit a recipe...</p>
-					<button id="sub">Submit</button>
-				</div>
-				<div class="holding">
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-					<div></div>
-				</div>
-				<div class="items">
-					<div>Skyshroom</div>
-					<div>Raw Meat</div>
-					<div>Hyrule Bass</div>
-					<div>Ironshell Crab</div>
-					<div>Chillfin Trout</div>
-					<div>Voltfin Trout</div>
-					<div>Raw Whole Bird</div>
-					<div>Raw Bird Thigh</div>
-					<div>Raw Prime Meat</div>
-					<div>Apple</div>
-					<div>Hyrule Herb</div>
-					<div>Hylian Tomato</div>
-					<div>Spicy Pepper</div>
-					<div>Acorn</div>
-					<div>Endura Carrot</div>
-					<div>Hearty Radish</div>
-					<div>Sundelion</div>
-					<div>Stambulb</div>
-					<div>Goat Butter</div>
-					<div>Hylian Shroom</div>
-					<div>Zapshroom</div>
-					<div>Silent Shroom</div>
-					<div>Goron Spice</div>
-					<div>Raw Gourmet Meat</div>
-					<div>Rock Salt</div>
-				</div>
-			</div>
-			<script async> 
-				async function fj() {
-					const data = await fetch('/recipes.json');
-					return await data.json();
-				}
-				async function main() {
-					const items = document.querySelectorAll('.items div');
-					items.forEach(function(div) {
-						div.onclick = function() {
-							const holding = document.querySelectorAll('.holding div');
-							let last;
-							for (const elem of holding) {
-								if (elem.innerText === '') {
-									last = elem;
-								}
-							}
-							if (last) {
-								last.innerText = div.innerText;
-							}
-						};
-					});
-					const holdingSet = document.querySelectorAll('.holding div');
-					holdingSet.forEach(function(div) {
-						div.onclick = function() {
-							div.innerText = '';
-						}
-					});
-					const recipes = await fj();
-					const ingredients = Object.keys(recipes);
-					const ir = {};
-					for (let i of ingredients) {
-						ir[i.split('').sort().join('')] = i;
-					}
-					const button = document.querySelector('#sub');
-					button.onclick = function() {
-						const bar = document.querySelectorAll('.holding div');
-						let compound = '';
-						for (const div of bar) {
-							if (div.innerText !== '') {
-								compound += div.innerText + ',';
-							}
-						}
-						let k;
-						if (compound.endsWith(',')) {
-							k = compound.slice(0, compound.length-1).replace(/\s/g,'').split('').sort().join('');
-						} else { return; }
-						const irk = Object.keys(ir);
-						const index = irk.findIndex(elem => elem === k);
-						console.log(index);
-						if(index !== -1) {
-							const p = document.querySelector('#target');
-							p.innerText = recipes[ir[k]]; 
-						} else { return; }
-					};
-				}
-				main();
-			</script>
-		</body>
-</html>
+<html>
+<head>
+  <title>about totk</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+  
+    p {
+      margin: 10px;
+      padding: 0 20px;
+      line-height: 1.5;
+      text-align: justify;
+    }
+    
+    @media (max-width: 600px) {
+      p {
+        font-size: 14px;
+      }
+    }
+    
+    ul {
+      list-style-type: none;
+    }
+  </style>
+</head>
+<body>
+	<h1>On `totk`</h1>
+	<p>
+		totk started as a sandbox for learning Solid.js and Tailwind. I was playing through the new Legend of Zelda game, Tears of the Kingdom, when I searched online for a recipe builder to see what I could make with the ingredients in my inventory. The game had only recently come out, so options were sparse. That's how I came about making totk. Next, came implementation. I wanted to explore Solid.js and Tailwind, so that's where I started. I didn't design anything ahead of time, so I didn't realize how simple the resulting product would be -- I finished a primitive (though sleeker looking, truthfully) version of `totk`, making extensive use of Solid's fine-grained reactivity. The initial version had some additional features, namely a counter on each component showing how many of that item were in the "holding bar", and little plus and minus buttons to increase or decrease the amount of any given item to be used as part of a recipe.	
+	<p>
+	<p>
+		After taking a break to work on some other projects, I began a real design phase in Figma. Figma's Dev Mode exports vanilla CSS, not Tailwind, and given how small the app was, I decided on just doing everything in Vanilla Javascript too. In the end, there wasn't too much to it! It required some compromises though: instead of images for each food item and final recipe, I used text, and I had to drop Tailwind and fill in the gaps left by Figma myself. What ended up being tricky was writing asynchronous code in an embdedded script tag (yes, I also decided to everything in one HTML file). One goal I didn't reach though was full functionality while hosting statically. It needs to be served to read in the JSON datasource. You can check out what it looks like here <a href="totk.html">totk</a>.
+	</p>
+</body>
+</head>
