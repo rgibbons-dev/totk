@@ -144,7 +144,7 @@
 							const holding = document.querySelectorAll('.holding div');
 							let last;
 							for (const elem of holding) {
-								if (div.innerText === '') {
+								if (elem.innerText === '') {
 									last = elem;
 								}
 							}
@@ -161,9 +161,9 @@
 					});
 					const recipes = await fj();
 					const ingredients = Object.keys(recipes);
-					const ir = [];
+					const ir = {};
 					for (let i of ingredients) {
-						ir.push(i.split('').sort().join(''));
+						ir[i.split('').sort().join('')] = i;
 					}
 					const button = document.querySelector('#sub');
 					button.onclick = function() {
@@ -174,13 +174,16 @@
 								compound += div.innerText + ',';
 							}
 						}
+						let k;
 						if (compound.endsWith(',')) {
-							const k = compound.slice(0, compound.length-1).split('').sort().join('');
+							k = compound.slice(0, compound.length-1).replace(/\s/g,'').split('').sort().join('');
 						} else { return; }
-						const index = ir.findIndex(elem => elem === k);
+						const irk = Object.keys(ir);
+						const index = irk.findIndex(elem => elem === k);
+						console.log(index);
 						if(index !== -1) {
 							const p = document.querySelector('#target');
-							p.innerText = recipes[i]; 
+							p.innerText = recipes[ir[k]]; 
 						} else { return; }
 					};
 				}
